@@ -5,17 +5,15 @@ Jest to repozytorium związane z projektem realizowanym przez Koło Naukowe Geod
 ## Moduły wykorzystane w projekcie:
 - Moduł czytnika kart microSD ([link](https://botland.com.pl/akcesoria-do-kart-pamieci/8230-modul-czytnika-kart-microsd-5904422311278.html?cd=18298825138&ad=&kd=&gad_source=1&gclid=Cj0KCQjw4MSzBhC8ARIsAPFOuyV3e0OKvE2_MWXHbHzuE3z-97jvh5oQhjkQfZgNQd0Qb-kYaUrYY7caAhA6EALw_wcB)) 
 
-<img src="![modul-czytnika-kart-microsd](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/assets/173694204/d6dedc90-ff2a-433d-b4b9-6081e24ce8fd)
-p" alt="Moduł czytnika kart microSD" width="200" height="200">
+<img src="assets/modul-czytnika-kart-microsd.jpg" width="200" height="200">
 
 - Moduł odbiornika GNSS GPS DFRobot TEL0157 ([link](https://botland.com.pl/moduly-gps/22671-gravity-modul-odbiornika-gnss-gps-beidou-i2cuart-dfrobot-tel0157-6959420923199.html?cd=18298825651&ad=&kd=&gad_source=1&gclid=Cj0KCQjw4MSzBhC8ARIsAPFOuyVK5DkbfYtcIf9Kkr6AhN3Mr3t-RRxih82mm45TOmbRo41qDEjdA6waAuWuEALw_wcB)) 
 
-<img src="![gravity-modul-odbiornika-gnss-gps-beidou-i2cuart-dfrobot-tel0157](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/assets/173694204/552cb718-d298-41c3-9363-cafaa5b204a4)" alt="Moduł odbiornika GNSS" width="200" height="200">
+<img src="assets/gravity-modul-odbiornika-gnss-gps-beidou-i2cuart-dfrobot-tel0157.jpg" alt="Moduł odbiornika GNSS" width="200" height="200">
 
 - Moduł ultradźwiękowego czunika odległości JSN-SR04T z sondą wodoodporną ([link](https://botland.com.pl/ultradzwiekowe-czujniki-odleglosci/7266-ultradzwiekowy-czujnik-odleglosci-jsn-sr04t-20-450cm-z-sonda-wodoodporna-5904422310066.html)) 
 
-<img src="![ultradzwiekowy-czujnik-odleglosci-jsn-sr04t-20-450cm-z-sonda-wodoodporna](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/assets/173694204/2a8c9be3-6a25-428c-af80-6ed9cab2a954)
-" alt="Ultradźwiękowy czujnik odległości" width="200" height="200">
+<img src="assets/ultradzwiekowy-czujnik-odleglosci-jsn-sr04t-20-450cm-z-sonda-wodoodporna.jpg" alt="Ultradźwiękowy czujnik odległości" width="200" height="200">
 
 ## Od czego rozpocząć?
 
