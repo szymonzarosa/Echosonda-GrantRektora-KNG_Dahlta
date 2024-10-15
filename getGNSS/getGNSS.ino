@@ -10,15 +10,15 @@
   */
 
 
-// KJ: Importujemy bibliotekę DFRobot_GNSS - składa się ona z odpowiednio napisanego kodu, który pozwala na komunikację z modułem GNSS
-// KJ: Dla nas istotne jest jedynie umiejętne korzystanie z funkcji dostępnych w tej bibliotece co jest pokazane w poniższym kodzie
+// Importujemy bibliotekę DFRobot_GNSS - składa się ona z odpowiednio napisanego kodu, który pozwala na komunikację z modułem GNSS
+// Dla nas istotne jest jedynie umiejętne korzystanie z funkcji dostępnych w tej bibliotece co jest pokazane w poniższym kodzie
 
 #include "DFRobot_GNSS.h"
 
-// KJ: Jeżeli chcemy używać komunikacji I2C to odkomentowujemy poniższą linię (raczej chcemy używać komunikacji UART więc zakomentowujemy poniższą linię)
+// Jeżeli chcemy używać komunikacji I2C to odkomentowujemy poniższą linię (raczej chcemy używać komunikacji UART, więc zakomentowujemy poniższą linię)
 // #define I2C_COMMUNICATION  //use I2C for communication, but use the serial port for communication if the line of codes were masked
 
-// KJ: Jeżeli odkomentujemy powyższą linię to poniższe linie zostanie wywoała i ustawi się moduł do komunikacji I2C
+// KJ: Jeżeli odkomentujemy powyższą linię to poniższe linie zostaną wywołane i moduł ustawi się do komunikacji I2C
 #ifdef  I2C_COMMUNICATION
   DFRobot_GNSS_I2C gnss(&Wire ,GNSS_DEVICE_ADDR);
 #else
@@ -32,10 +32,10 @@
  *     TX     |              RX                |     Serial1 RX1      |     4     |   4/D7  |  D3   |     X      |  rx1  |
  * ----------------------------------------------------------------------------------------------------------------------*/
 
-// KJ: Poniższe linijki wywołają się w zależności od wykorzystywanego modelu płytki (my używamy UNO więc wywoła się pierwsza linijka)
+// Poniższe linijki wywołają się w zależności od wykorzystywanego modelu płytki (my używamy UNO, więc wywoła się pierwsza linijka)
 /* Baud rate cannot be changed */
   #if defined(ARDUINO_AVR_UNO) || defined(ESP8266)
-    // KJ: Ustawiana jest komunikacja UART na pinach 4 i 5 (zgodnie z tabelką powyżej) oraz z prędkością 9600
+    // Ustawiana jest komunikacja UART na pinach 4 i 5 (zgodnie z tabelką powyżej) oraz z prędkością 9600
     SoftwareSerial mySerial(4, 5);
     DFRobot_GNSS_UART gnss(&mySerial ,9600);
   #elif defined(ESP32)
@@ -45,22 +45,22 @@
   #endif
 #endif
 
-// KJ: Funkcja setup() wywołuje się raz po uruchomieniu płytki
+// Funkcja setup() wywołuje się raz po uruchomieniu płytki
 void setup()
 {
 
-  // KJ: Inicjalizacja komunikacji szeregowej z prędkością 115200 (którą uruchamiamy przy użyciu portu szeregowego w Arduino IDE)
-  // KJ: W poniższej linijce sprawdzamy czy moduł GNSS jest podłączony do płytki, jeżeli nie to co sekundę wyświetlamy komunikat "NO Deivces !"
+  // Inicjalizacja komunikacji szeregowej z prędkością 115200 (którą uruchamiamy przy użyciu portu szeregowego w Arduino IDE)
+  // W poniższej linijce sprawdzamy, czy moduł GNSS jest podłączony do płytki, jeżeli nie, to co sekundę wyświetlamy komunikat "NO Devices !"
   Serial.begin(115200);
   while(!gnss.begin()){
-    Serial.println("NO Deivces !");
+    Serial.println("NO Devices !");
     delay(1000);
   }
 
-  // KJ: Jeżeli moduł GNSS jest poprawnie połączony to uruchamiamy zasilanie modułu
+  // Jeżeli moduł GNSS jest poprawnie połączony to uruchamiamy zasilanie modułu
   gnss.enablePower();      // Enable gnss power 
 
-  // KJ: Wybieramy jaki system GNSS chcemy używać (system BeiDou jest używany w Chinach, system GLONASS jest używany w Rosji)
+  // Wybieramy, jaki system GNSS chcemy używać (system BeiDou jest używany w Chinach, system GLONASS jest używany w Rosji)
 
 /** Set GNSS to be used 
  *   eGPS              use gps
@@ -73,24 +73,24 @@ void setup()
  */
   gnss.setGnss(eGPS); // KJ: odpowiednio nadpisujemy wartość
 
-  // KJ: Możemy wyłączyć lub włączyć diodę RGB na module
+  // Możemy wyłączyć lub włączyć diodę RGB na module
   // gnss.setRgbOff();
   gnss.setRgbOn();
   // gnss.disablePower();      // Disable GNSS, the data will not be refreshed after disabling  
 }
 
-// KJ: Funkcja loop() wywołuje się w nieskończoność po wykonaniu funkcji setup()
+// Funkcja loop() wywołuje się w nieskończoność po wykonaniu funkcji setup()
 void loop()
 {
-  // KJ: Pobieramy dane z modułu GNSS, 
-  // KJ: Funkcja getUTC() zwraca strukturę sTim_t z danymi czasu (godzina, minuta, sekunda)
-  // KJ: Funkcja getDate() zwraca strukturę sTim_t z danymi daty (rok, miesiąc, dzień)
-  // KJ: Funkcja getLat() zwraca strukturę sLonLat_t z danymi szerokości geograficznej
-  // KJ: Funkcja getLon() zwraca strukturę sLonLat_t z danymi długości geograficznej
-  // KJ: Funkcja getAlt() zwraca wysokość nad poziomem morza
-  // KJ: Funkcja getNumSatUsed() zwraca ilość użytych satelitów
-  // KJ: Funkcja getSog() zwraca prędkość węzłowa (podczas poruszania się)
-  // KJ: Funkcja getCog() zwraca kąt kursu (podczas poruszania się)
+  // Pobieramy dane z modułu GNSS, 
+  // Funkcja getUTC() zwraca strukturę sTim_t z danymi czasu (godzina, minuta, sekunda)
+  // Funkcja getDate() zwraca strukturę sTim_t z danymi daty (rok, miesiąc, dzień)
+  // Funkcja getLat() zwraca strukturę sLonLat_t z danymi szerokości geograficznej
+  // Funkcja getLon() zwraca strukturę sLonLat_t z danymi długości geograficznej
+  // Funkcja getAlt() zwraca wysokość nad poziomem morza
+  // Funkcja getNumSatUsed() zwraca ilość użytych satelitów
+  // Funkcja getSog() zwraca prędkość węzłową (podczas poruszania się)
+  // Funkcja getCog() zwraca kąt kursu (podczas poruszania się)
 
 
   sTim_t utc = gnss.getUTC();
@@ -102,10 +102,10 @@ void loop()
   double sog = gnss.getSog();
   double cog = gnss.getCog();
 
-  // KJ: Wyświetlamy pobrane dane na porcie szeregowym
-  // KJ: Czym różni się funkcja print i printl można sprawdzić w dokumentacji Arduino
-  // KJ: https://www.arduino.cc/reference/en/language/functions/communication/serial/println/
-  // KJ: https://www.arduino.cc/reference/en/language/functions/communication/serial/print/
+  // KWyświetlamy pobrane dane na porcie szeregowym
+  // Czym różni się funkcja print i printl można sprawdzić w dokumentacji Arduino
+  // https://www.arduino.cc/reference/en/language/functions/communication/serial/println/
+  // https://www.arduino.cc/reference/en/language/functions/communication/serial/print/
 
   Serial.println("");
   Serial.print(date.year);
@@ -143,7 +143,7 @@ void loop()
   Serial.print("gnss mode =  ");
   Serial.println(gnss.getGnssMode());
 
-  // KJ: Możemy zatrzymać działanie programu na 1 sekundę przed kolejnym odczytem
+  // Możemy zatrzymać działanie programu na 1 sekundę przed kolejnym odczytem
 
   // delay(1000);
 }
