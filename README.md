@@ -90,7 +90,7 @@ Jeżeli wartość *distance* jest ujemna, oznacza to, że pomiar został wykonan
 
 Aby kontrolować dokładność zapisanych danych pomiarowych, został napisany kod w Pythonie, który konwertuje plik CSV zawierający wyniki pomiarów na format GPX. Plik GPX można następnie otworzyć na stronie takiej jak [gpx.studio](https://gpx.studio/), aby wizualizować trasę, którą wykonano.
 
-Przykładowy plik do konwersji znajduje się w folderze *...*.
+Przykładowy plik do konwersji oraz kod do zamiany rozszerzenia pliku znajduje się w folderze [**gpx_trajectory**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/gpx_trajectory)
 
 ## Pomiar referencyjny punktów znajdujących się przy brzegu
 
