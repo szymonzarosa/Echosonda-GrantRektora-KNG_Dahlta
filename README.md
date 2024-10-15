@@ -26,6 +26,11 @@ Aby uruchomić program, należy najpierw zainstalować odpowiednie biblioteki:
 
 Wszystko wykonujemy w programie Arduino IDE, w zakładce "Menedżer bibliotek", wpisując powyższe nazwy i klikając "Zainstaluj".
 
+W folderze [**libraries**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/libraries) znajdują się niektóre pliki z tych bibliotek. Najważniejszą rzeczą, którą
+musieliśmy zrobić to w pliku **jsnsr04t.h** zmienić wartość METER_CONVERSION_COEFFICIENT na wartość 13, gdyż początkowa wartość 58 była właściwa dla poruszania się dźwięku w powietrzu.
+My natomiast używając ultradźwiękowego czujnika w wodzie, musieliśmy podzielić ten współczynnik około 4,5 razy, więc jego wartość powinna wynieść 13.
+
+
 Następnie podpinamy odpowiednio przewody modułów do pinów Arduino Uno w następującej kolejności:
 
 ### Moduł GNSS
