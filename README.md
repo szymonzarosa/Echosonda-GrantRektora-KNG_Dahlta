@@ -92,6 +92,8 @@ Aby kontrolować dokładność zapisanych danych pomiarowych, został napisany k
 
 Przykładowy plik po konwersji **output.gpx** oraz kod do zamiany rozszerzenia pliku **python_file_csv_to_gpx.py** znajduje się w folderze [**gpx_trajectory**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/gpx_trajectory)
 
+(W tym folderze znajduje się również kod zamiany rozszerzenia pliku, jednakże zapisany w języku Matlab)
+
 ## Pomiar referencyjny punktów znajdujących się przy brzegu
 
 Wykonaliśmy pomiar 12 punktów referencyjnych znajdujących się w wodzie a także 2 osnów pomiarowych niedaleko zbiornika wodnego. Pomiar odbiornikiem GNSS trwał dwa razy po 1 sekundzie na każdy punkt referencyjny (w celu obliczenia przewyższenia a co za tym idzie głębokości, na jakiej znajduje się dany punkt). Ustaliliśmy, że nie potrzebujemy aż tak wysokiej dokładności współrzędnych (uzyskane błędy dx, dy, dh mieściły się w okolicach 1 cm. Pomiar osnowy natomiast miał na celu sprawdzenia dokładności wyznaczenia wartości współrzędnych płaskich. 
