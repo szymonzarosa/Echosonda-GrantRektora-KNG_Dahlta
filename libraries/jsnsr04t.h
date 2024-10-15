@@ -8,7 +8,7 @@
 
     #define JSNSR04T_PULSE_LOW_US           5
     #define JSNSR04T_PULSE_HIGH_US          30
-    #define METER_CONVERSION_COEFFICIENT    14
+    #define METER_CONVERSION_COEFFICIENT    13
 
     #include <ArduinoLog.h>
     #include <AsyncDelay.h>
