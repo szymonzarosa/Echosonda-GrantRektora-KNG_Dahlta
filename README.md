@@ -78,7 +78,7 @@ Po poprawnym podłączeniu komponentów i uruchomieniu płytki, dioda świeci na
 
 Gdy moduł GNSS nawiąże połączenie z satelitami, dioda zmienia kolor na żółty, co sygnalizuje potrzebę naciśnięcia przycisku. Po naciśnięciu przycisku, dioda zmienia się na zieloną i rozpoczyna regularne wykonywanie pomiarów co 2 sekundy.
 
-## Wyniki
+## Wyniki po pierwszym uruchomieniu
 
 Przykładowy wynik pomiaru znajduje się w folderze **output** jako plik o nazwie *hour_minute_second.csv*.
 
@@ -91,6 +91,26 @@ Jeżeli wartość *distance* jest ujemna, oznacza to, że pomiar został wykonan
 Aby kontrolować dokładność zapisanych danych pomiarowych, został napisany kod w Pythonie, który konwertuje plik CSV zawierający wyniki pomiarów na format GPX. Plik GPX można następnie otworzyć na stronie takiej jak [gpx.studio](https://gpx.studio/), aby wizualizować trasę, którą wykonano.
 
 Przykładowy plik do konwersji znajduje się w folderze *...*.
+
+## Pomiar referencyjny punktów znajdujących się przy brzegu
+
+Wykonaliśmy pomiar 12 punktów referencyjnych znajdujących się w wodzie a także 2 osnów pomiarowych niedaleko zbiornika wodnego. Pomiar odbiornikiem GNSS trwał dwa razy po 1 sekundzie na każdy punkt referencyjny (w celu obliczenia przewyższenia a co za tym idzie głębokości, na jakiej znajduje się dany punkt). Ustaliliśmy, że nie potrzebujemy aż tak wysokiej dokładności współrzędnych (uzyskane błędy dx, dy, dh mieściły się w okolicach 1 cm. Pomiar osnowy natomiast miał na celu sprawdzenia dokładności wyznaczenia wartości współrzędnych płaskich. 
+
+Pomiar prototypem na 12 punktach referencyjnych trwał po jednej minucie na każdy punkt, natomiast pomiar na punktach osnowy trwał po 4 minuty. Po pomiarze dane te zostały uśrednione i porównane z obserwacjami z odbiornika GNSS. 
+
+## Wyniki pomiaru referencyjnego 
+
+
+
+## Pomiar batymetryczny
+
+
+
+## Wyniki pomiaru batymetrycznego
+
+
+
+
 
 ## Dodatkowe linki
 
