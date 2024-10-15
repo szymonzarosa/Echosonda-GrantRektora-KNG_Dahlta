@@ -1,6 +1,6 @@
 # Grant Rektora 2024 - Pomiary batymetryczne [KNG Dahlta]
   
-Jest to repozytorium związane z projektem realizowanym przez Koło Naukowe Geodetów 'Dahlta' jako jeden z Grantów Rektora 2024 [AGH]. Projekt "Program badawczy HydroBIM – część pierwsza: automatyzacja pomiarów batymetrycznych zbiorników wodnych i szlaków żeglugowych" ma na celu zbudowanie prototypu echosondy, po to by sprawdzić go w pomiarach batymetrycznych zbiorników wodnych.
+Jest to repozytorium związane z projektem realizowanym przez Koło Naukowe Geodetów 'Dahlta' jako jeden z Grantów Rektora 2024 [AGH]. Projekt "Program badawczy HydroBIM – część pierwsza: automatyzacja pomiarów batymetrycznych zbiorników wodnych i szlaków żeglugowych" ma na celu zbudowanie prototypu echosondy, po to by sprawdzić nauczyć się podstaw elektroniki oraz sprawdzenie jego dokładności, zarówno wyznaczenia współrzędnych, jak i wyznaczenia głębokości w pomiarach batymetrycznych.
 
 
 ## Moduły wykorzystane w projekcie:
