@@ -121,12 +121,12 @@ Poniżej przedstawiam zestawienie pomierzonych głębokości przez GNSS z odbior
 
 Jak można zauważyć, ciężko jest stwierdzić na ile dokładnie czujnik sprawdza się przy swojej granicznej możliwej do zmierzenia odległości - ok. 1.00 metra. Natomiast można wnioskować, że jeśli ta wartość jest bliższa 2 metrów, to dokładność czujnika jest dość przyzwoita.
 
+Dokładność położenia punktu - współrzędne płaskie (X,Y)
+
 |               ODBIORNIK GNSS 		       |                 	ECHOSONDA		             |             	PORÓWNANIE	          |
 |----------------------------------------|-------------------------------------------|------------------------------------|
 |              UKŁAD PL-2000             |        		   	UKŁAD PL-2000              |              Odchyłki              |
-|----------------------------------------|-------------------------------------------|------------------------------------|
 |  PKT	|       X        |      	Y      |	 PKT  |     	X        |	     Y	       |  DELTA X	  | DELTA Y	 |   DELTA D  |
-|-------|----------------|---------------|--------|----------------|-----------------|------------|----------|------------|
 |  101  |	 5544536,012	 |  7427982,015  |	 1    | 	5544538,784  |	 7427981,379   |  	-2,772  |	 0,636	 |    2,844   |
 |  103  |	 5544532,966	 |  7427980,964  | 	 2   	|   5544535,737  |   7427980,519	 |   -2,771	  |  0,445	 |    2,807   |
 |  105  |	 5544529,980   |  7427980,037	 |   3   	|   5544532,374  |	 7427981,578	 |   -2,394   | -1,541	 |    2,847   |
@@ -139,7 +139,19 @@ Jak można zauważyć, ciężko jest stwierdzić na ile dokładnie czujnik spraw
 |  121  |	 5544525,873	 |  7428007,894  |	 11  	|   5544525,758  |	 7428008,032	 |    0,115	  | -0,138	 |    0,180   |
 |  123  |	 5544524,166	 |  7428012,583  |	 12   |  	5544523,054	 |   7428013,986	 |    1,112	  | -1,403	 |    1,790   |
 
-ŚREDNIO	1,863
+Średnia odchyłka to	1,863 metra. Przy założeniu, że pojedynczy pomiar GNSS z echosondy to około 4 metry, to przy pomiarze 1-minutowym nad jednym punktem to zaskakująco dobry wynik. Należy też zauważyć, że wraz z mijaniem czasu od inicjalizacji zbierania informacji, wyniki dokładności położenia punktów a tym samym wartości bezwględne odchyłek od pomiaru odbiornikiem GNSS malały.
+
+
+Dokładność położenia punktu - współrzędne płaskie (X,Y)
+
+
+|               ODBIORNIK GNSS 		         |                 	ECHOSONDA		                 |             	PORÓWNANIE	          |
+|              UKŁAD PL-2000               |        		   	UKŁAD PL-2000                  |              Odchyłki              |
+|  PKT	 |       X         |      	Y      |	 PKT      |     	X        |	     Y	       |  DELTA X	  | DELTA Y	 |   DELTA D  |
+|  5001  |	 5544537,553	 |  7427986,918  |	 5001S    | 	5544537,196  |	 7427988,874   |  	0,357   |	 -1,956	 |    1,988   |
+|  5000  |	 5544523,970	 |  7428014,844  |	 5000S    | 	5544524,239  |	 7428015,908   |   -0,269   |	 -1,064	 |    1,097   |
+
+Tutaj natomiast mierzono punkty osnowy. Czas pomiaru echosondą nad jednym punktem wynosił 4 minuty. Jak można zzauważyć - musimy poczekać chwilę od inicjalizacji urządzenia, by dokładność wyznaczenia współrzędnych była większa.
 
 
 
