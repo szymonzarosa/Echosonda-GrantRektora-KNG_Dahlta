@@ -126,7 +126,7 @@ Dokładność położenia punktu - współrzędne płaskie (X,Y)
 ODBIORNIK GNSS i	ECHOSONDA	PORÓWNANIE
 	       (UKŁAD PL-2000)            
 
- <img src="assets/punkty_referencyjne_wody_101_123.jpg" width="400" height="400">
+ <img src="assets/punkty_referencyjne_wody_101_123.jpg" width="977" height="730">
 
 |  PKT	|       X        |      	Y      |	 PKT  |     	X        |	     Y	       |  DELTA X	  | DELTA Y	 |   DELTA D  |
 |-------|----------------|---------------|--------|----------------|-----------------|------------|----------|------------|
@@ -150,7 +150,7 @@ Dokładność położenia punktu - współrzędne płaskie (X,Y)
 ODBIORNIK GNSS i	ECHOSONDA	PORÓWNANIE
 	       (UKŁAD PL-2000)         
 
-  <img src="assets/punkty_osnowy-5000-5001.jpg" width="400" height="400">
+  <img src="assets/punkty_osnowy-5000-5001.jpg" width="973" height="732	">
 
 |  PKT	 |       X         |      	Y      |	 PKT      |     	X        |	     Y	       |  DELTA X	  | DELTA Y	 |   DELTA D  |
 |--------|-----------------|---------------|------------|----------------|-----------------|------------|----------|------------|
