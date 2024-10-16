@@ -164,7 +164,17 @@ Tutaj natomiast mierzono punkty osnowy. Czas pomiaru echosondą nad jednym punkt
 
 ## Pomiar batymetryczny
 
+Wykonaliśmy pomiar batymetryczny za pomocą roweru wodnego. Umocowaliśmy deskę z uchwytami do rurki PCV, przez którą przechodził kabel z czujnikiem odległości, do boku pojazdu wodnego szarą taśmą, a pudełko z prototypem ustawiliśmy na tylnym siedzeniu. Poniżej zdjęcia:
 
+<img src="assets/pomiar_batymetryczny_1.jpg" width="792" height="435">
+
+<img src="assets/pomiar_batymetryczny_2.jpg" width="882" height="415">
+
+<img src="assets/pomiar_batymetryczny_3.jpg" width="919" height="689">
+
+A tam wygląda prototyp w środku plastikowego pudełka:
+
+<img src="assets/prototyp_echosondy.jpg" width="1184" height="887">
 
 ## Wyniki pomiaru batymetrycznego
 
