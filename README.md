@@ -172,7 +172,7 @@ Wykonaliśmy pomiar batymetryczny za pomocą roweru wodnego. Umocowaliśmy desk�
 
 <img src="assets/pomiar_batymetryczny_3.jpg" width="919" height="689">
 
-A tam wygląda prototyp w środku plastikowego pudełka:
+A tak wygląda prototyp w środku plastikowego pudełka:
 
 <img src="assets/prototyp_echosondy.jpg" width="1184" height="887">
 
