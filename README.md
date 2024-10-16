@@ -142,7 +142,7 @@ ODBIORNIK GNSS i	ECHOSONDA	PORÓWNANIE
 |  121  |	 5544525,873	 |  7428007,894  |	 11  	|   5544525,758  |	 7428008,032	 |    0,115	  | -0,138	 |    0,180   |
 |  123  |	 5544524,166	 |  7428012,583  |	 12   |  	5544523,054	 |   7428013,986	 |    1,112	  | -1,403	 |    1,790   |
 
-Średnia odchyłka to	1,863 metra. Przy założeniu, że pojedynczy pomiar GNSS z echosondy to około 2 metry, to przy pomiarze 1-minutowym nad jednym punktem to zaskakująco dobry wynik. Należy też zauważyć, że wraz z mijaniem czasu od inicjalizacji zbierania informacji, wyniki dokładności położenia punktów a tym samym wartości bezwględne odchyłek od pomiaru odbiornikiem GNSS malały.
+Średnia odchyłka to	1,863 metra. Przy założeniu, że pojedynczy pomiar GNSS z echosondy to około 2 metry, to przy pomiarze 1-minutowym nad jednym punktem to dobry, ale i spodziewany wynik. Należy też zauważyć, że wraz z mijaniem czasu od inicjalizacji zbierania informacji, wyniki dokładności położenia punktów, a tym samym wartości bezwględne odchyłek od pomiaru odbiornikiem GNSS malały.
 
 
 Dokładność położenia punktu - współrzędne płaskie (X,Y)
