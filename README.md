@@ -240,15 +240,15 @@ A tak wygląda prototyp w środku plastikowego pudełka:
 
 Po analizie wykonananych obserwacji z pomiaru batymetrycznego wykonaliśmy mapy 3D. Jedna z nich, to część zbiornika zalewowego Bagry przy Klubie Żeglarskim Horn, a druga miała na celu sprawdzenie, jaką największą głębokość uda nam się pomierzyć (było to około 7,50 metra). Poniżej znajdują się opracowania.
 
-[zdjecie]
+<img src="assets/mapa3D-1.png" width="1157" height="768">
 
-[zdjecie]
+<img src="assets/mapa3D-2.png" width="1094" height="762">
 
 Po analizie opracować kartograficznych doszliśmy do wniosku, by spróbować pozbyć się tak zwanych "peak'ów", czyli bardzo prawdopodobnie błędnych wyników pomiaru, np. gdy głębokość jest znaczna, a czujnik pokazuje głębokość możliwie najniższą przez niego uzyskiwaną. Poniżej wynik poprawy uzyskanych opracowań w postaci załączonych zdjęć.
 
-[zdjecie]
+<img src="assets/mapa3D-3.png" width="1102" height="698">
 
-[zdjecie]
+<img src="assets/mapa3D-4.png" width="1105" height="745">
 
 
 ## Dodatkowe linki
