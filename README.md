@@ -2,6 +2,10 @@
   
 Jest to repozytorium związane z projektem realizowanym przez Koło Naukowe Geodetów 'Dahlta' jako jeden z Grantów Rektora 2024 [AGH]. Projekt "Program badawczy HydroBIM – część pierwsza: automatyzacja pomiarów batymetrycznych zbiorników wodnych i szlaków żeglugowych" ma na celu zbudowanie prototypu echosondy, po to by sprawdzić nauczyć się podstaw elektroniki oraz sprawdzenie jego dokładności, zarówno wyznaczenia współrzędnych, jak i wyznaczenia głębokości w pomiarach batymetrycznych.
 
+Współczesne badania hydrograficzne i zarządzanie zasobami wodnymi coraz częściej wykorzystują technologie automatyczne do pozyskiwania szczegółowych danych batymetrycznych, które stanowią podstawę analiz topografii dna zbiorników wodnych. Tradycyjne metody pomiaru głębokości, mimo swojej dokładności, są zazwyczaj kosztowne, wymagają specjalistycznego sprzętu oraz wykwalifikowanej obsługi, co ogranicza ich dostępność i praktyczne zastosowanie. W odpowiedzi na te wyzwania, projekt udostępniony w repozytorium na platformie GitHub [1] dąży do stworzenia ekonomicznego i prostego w obsłudze prototypu echosondy, umożliwiającego gromadzenie oraz przetwarzanie danych głębokościowych.
+
+Z myślą o tej możliwości część członków Koła Naukowego Geodetów „Dahlta” opracowało projekt badawczy, zrealizowany jako część Grantu Rektora 2024. Projekt opisany w niniejszym artykule ma na celu opracowanie niskokosztowego, zautomatyzowanego systemu pomiarów batymetrycznych, który dzięki wykorzystaniu prototypu echosondy zintegrowanego z modułem GPS pozwala na rejestrację danych topograficznych dna zbiorników wodnych. W projekcie tym wykorzystano płytkę Arduino, co umożliwia analizę oraz zapis danych w sposób ciągły i autonomiczny dzięki modułowi karty microSD. Dzięki zastosowaniu prototypu echosondy, można generować i odbierać sygnały ultradźwiękowe, które po przetworzeniu dostarczają informacji o głębokości w różnych punktach pomiarowych, jednocześnie zapisując współrzędne geograficzne dla każdej wartości głębokości, a także czas, w którym informacje te zostały pomierzone.
+
 
 ## Moduły wykorzystane w projekcie:
 - [Moduł czytnika kart microSD](https://botland.com.pl/akcesoria-do-kart-pamieci/8230-modul-czytnika-kart-microsd-5904422311278.html?cd=18298825138&ad=&kd=&gad_source=1&gclid=Cj0KCQjw4MSzBhC8ARIsAPFOuyV3e0OKvE2_MWXHbHzuE3z-97jvh5oQhjkQfZgNQd0Qb-kYaUrYY7caAhA6EALw_wcB)
@@ -26,9 +30,28 @@ Aby uruchomić program, należy najpierw zainstalować odpowiednie biblioteki:
 
 Wszystko wykonujemy w programie Arduino IDE, w zakładce "Menedżer bibliotek", wpisując powyższe nazwy i klikając "Zainstaluj".
 
-W folderze [**libraries**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/libraries) znajdują się niektóre pliki z tych bibliotek. Najważniejszą rzeczą, którą
-musieliśmy zrobić to w pliku **jsnsr04t.h** zmienić wartość METER_CONVERSION_COEFFICIENT na wartość 13, gdyż początkowa wartość 58 była właściwa dla poruszania się dźwięku w powietrzu.
-My natomiast używając ultradźwiękowego czujnika w wodzie, musieliśmy podzielić ten współczynnik około 4,5 razy, więc jego wartość powinna wynieść 13.
+W folderze [**libraries**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/libraries) znajdują się niektóre pliki z tych bibliotek.
+
+Jednym z najważniejszych kroków po zainstalowaniu bibliotek jest zmiana wartości METER_CONVERSION_COEFFICIENT w bibliotece jsnsr04t.h. Domyślna wartość wynosząca 58 odpowiada prędkości dźwięku w powietrzu. Jednak podczas korzystania z ultradźwiękowego czujnika w wodzie, prędkość dźwięku jest znacznie wyższa, a zatem wartość ta musi być skorygowana.
+
+Na stronie związanej z czujnikiem [5] można znaleźć taką informację na temat przeliczania pomierzonego czasu tak by dostać wartość odległości:
+
+„Moduł dokonuje pomiaru odległości przy pomocy fali dźwiękowej o częstotliwości 40 kHz. Do mikrokontrolera wysyłany jest sygnał, w którym odległość zależna jest od czasu trwania stanu wysokiego i można ją obliczyć ze wzoru:
+
+test distance = (high level time × velocity of sound (340m/s) / 2
+
+W skrócie, aby otrzymać wynik w cm można wykorzystać wzór:
+
+distance [cm] = ( high level time [us] * 34 ) / 1000 / 2 ”
+
+Aby uzyskać poprawny współczynnik, należy podzielić pierwotną wartość 58 przez około 4,5. W wyniku tego obliczenia uzyskujemy wartość 13, co jest kluczowe dla uzyskania dokładnych pomiarów głębokości.
+
+Wykorzystywane prędkości do przeliczenia współczynnika wynoszą:
+
+- 340 m/s – prędkość poruszania się fali dźwiękowej w powietrzu
+- 1500 m/s – prędkość poruszania się fali dźwiękowej w wodzie
+
+Dlaczego jest to ważne? Dokonanie tej zmiany jest niezbędne, ponieważ jeśli współczynnik konwersji nie będzie odpowiednio dostosowany, pomiary głębokości będą niepoprawne, co może prowadzić do błędnych danych i niewłaściwych analiz.
 
 
 Następnie podpinamy odpowiednio przewody modułów do pinów Arduino Uno w następującej kolejności:
@@ -74,9 +97,15 @@ W folderze [**ourProject**](https://github.com/szymonzarosa/Echosonda-GrantRekto
 
 ## Pierwsze Uruchomienie
 
-Po poprawnym podłączeniu komponentów i uruchomieniu płytki, dioda świeci na czerwono do momentu uzyskania rozwiązania pozycji oraz połączenia z odpowiednią liczbą satelitów. Jest kluczowe, aby przeprowadzać pomiary na terenach, gdzie nie ma przeszkód widokowych, takich jak drzewa czy budynki, które mogłyby blokować sygnał satelitarny i wpływać na jego jakość.
+Po prawidłowym podłączeniu komponentów do płytki Arduino oraz jego uruchomieniu, czerwona dioda LED informuje nas, że urządzenie znajduje się w trybie oczekiwania na ustalenie pozycji. Ten kolor oznacza, że moduł GNSS nie uzyskał jeszcze dostępu do wystarczającej liczby satelitów, co jest niezbędne do rozpoczęcia działania echosondy. Zbieranie danych na temat głębokości i pozycji wymaga stabilnego sygnału satelitarnego, dlatego tryb oczekiwania pozostaje aktywny aż do uzyskania połączenia z minimalną liczbą satelitów, co umożliwia wiarygodne i dokładne wyznaczenie pozycji.
 
-Gdy moduł GNSS nawiąże połączenie z satelitami, dioda zmienia kolor na żółty, co sygnalizuje potrzebę naciśnięcia przycisku. Po naciśnięciu przycisku, dioda zmienia się na zieloną i rozpoczyna regularne wykonywanie pomiarów co 2 sekundy.
+Aby pomiary były jak najbardziej precyzyjne, kluczowe jest przeprowadzanie ich w miejscach pozbawionych przeszkód takich jak drzewa, budynki czy inne obiekty terenowe, które mogą zakłócać sygnał satelitarny. Przeszkody tego typu mogą powodować osłabienie lub zniekształcenie sygnału, prowadząc do problemów z ustaleniem dokładnych współrzędnych. Utrudniona widoczność satelitów skutkuje większymi błędami w pomiarze pozycji i, w rezultacie, wpływa na wiarygodność odczytów głębokości.
+
+Po uzyskaniu stabilnego połączenia z wystarczającą liczbą satelitów dioda LED zmienia kolor na żółty, co oznacza, że system jest gotowy do działania, jednak wymaga jeszcze interakcji ze strony użytkownika. Kolor żółty sygnalizuje, że moduł GNSS ustalił już pozycję, ale system wymaga potwierdzenia rozpoczęcia pomiarów poprzez naciśnięcie przycisku. Dopiero ten krok umożliwia pełną aktywację systemu.
+
+Gdy użytkownik naciśnie przycisk, dioda zmienia kolor na zielony, co sygnalizuje przejście systemu w tryb aktywnego pomiaru. W tym trybie moduł GNSS przeprowadza pomiary w stałych odstępach co 4 sekundy, zbierając dane na temat pozycji oraz głębokości.
+
+Taki trójfazowy system sygnalizacji za pomocą kolorów LED nie tylko ułatwia użytkownikowi zrozumienie aktualnego stanu urządzenia, ale także zwiększa niezawodność procesu pomiarowego, umożliwiając szybkie rozpoznanie ewentualnych problemów przed rozpoczęciem właściwych pomiarów.
 
 ## Wyniki po pierwszym uruchomieniu
 
@@ -84,21 +113,49 @@ Przykładowy wynik pomiaru znajduje się w folderze **output** jako plik o nazwi
 
 Plik składa się z następujących danych: *year*, *month*, *day*, *hour*, *minute*, *second*, *latDirection*, *lonDirection*, *latitude*, *longitude*, *latDegree*, *lonDegree*, *depth*, *high*, *starID*, *sog*, *cog*.
 
-Jeżeli wartość *distance* jest ujemna, oznacza to, że pomiar został wykonany dla odległości większej niż dany moduł może wykryć.
+Poniżej znajduje się szczegółowy opis zapisywanych danych:
+
+- year:  Rok pomiaru.
+- month:  Miesiąc pomiaru.
+- day:  Dzień pomiaru.
+- hour:  Godzina pomiaru.
+- minute:  Minuta pomiaru.
+- second:  Sekunda pomiaru.
+- latDirection:  Kierunek szerokości geograficznej (N – północ, S – południe).
+- lonDirection:  Kierunek długości geograficznej (E – wschód, W – zachód).
+- latitude:  Szerokość geograficzna w formacie dziesiętnym.
+- longitude:  Długość geograficzna w formacie dziesiętnym.
+- latDegree:  Szerokość geograficzna w stopniach.
+- lonDegree:  Długość geograficzna w stopniach.
+- depth:  Głębokość zmierzona przez echosondę zapisywana w centymetrach.
+- high:  Wysokość nad poziomem morza.
+- starID:  Liczba widzianych satelit.
+- sog:  Prędkość statku przez wodę (Speed Over Ground).
+- cog:  Kurs statku przez wodę (Course Over Ground).
+
+
+W kontekście analizowanych danych, kluczowe znaczenie ma parametr depth, którego interpretacja wymaga szczególnej uwagi. W przypadku, gdy zmienna przyjmuje wartość ujemną, jest to jednoznaczny sygnał, że głębokość przekroczyła maksymalny zakres detekcji dostępny dla zastosowanego modułu pomiarowego jakim jest ultradźwiękowy czujnik odległości. Taka sytuacja wskazuje na brak możliwości uzyskania wiarygodnych danych na temat rzeczywistej głębokości. Możliwe przyczyny tego ograniczenia obejmują nie tylko nadmierną głębokość zbiornika, ale również obecność czynników środowiskowych zakłócających odbiór sygnału, takich jak duże zagęszczenie cząsteczek w toni wodnej, odbicia od struktur podwodnych, czy interferencje związane z zasoleniem i temperaturą wody.
+
+Początkowy zakres głębokości wykrywanych przez system wynosił od 20 cm do 450 cm. Jednakże, istotna jest tu konieczność uwzględnienia korekty wynikającej ze zmiany wartości współczynnika w zastosowanej bibliotece, co modyfikuje zakres operacyjny czujnika. Po aktualizacji współczynników pomiarowych, zakres pomiaru głębokości przez zastosowany czujnik wodny wynosi od 0,90 metra do 20,25 metra. Ta modyfikacja jest kluczowa, ponieważ pozwala na precyzyjne rozszerzenie zakresu pomiarowego, co umożliwia pomiar głębokości w szerszym spektrum środowisk wodnych.
+
+Takie podejście jest niezwykle istotne dla zapewnienia wysokiej jakości danych, ponieważ każda wartość spoza tego zakresu, w szczególności ujemna wartość distance, powinna być traktowana jako błędna. W związku z tym, ujemne wartości stanowią wskaźnik problemów z odczytem i wymagają dodatkowej analizy lub korekty metodologicznej, aby uniknąć błędnych interpretacji wyników pomiarów w projektach hydrograficznych i badaniach środowiskowych.
 
 ## Zamiana rozszerzenia pliku csv na gpx
 
-Aby kontrolować dokładność zapisanych danych pomiarowych, został napisany kod w Pythonie, który konwertuje plik CSV zawierający wyniki pomiarów na format GPX. Plik GPX można następnie otworzyć na stronie takiej jak [gpx.studio](https://gpx.studio/), aby wizualizować trasę, którą wykonano.
+W celu monitorowania oraz analizy dokładności wyznaczenia położenia punktów GPS, stworzono kod w dwóch językach programowania: MATLAB oraz Python. Kod ten umożliwia efektywne przetwarzanie oraz konwersję danych przestrzennych zapisanych w plikach CSV (Comma-Separated Values), które przechowywane są na karcie microSD. Pliki CSV zawierają surowe dane współrzędnych geograficznych, takich jak szerokość i długość geograficzna, które stanowią podstawę analizy i wizualizacji ścieżek pomiarowych.
+
+Głównym celem kodu jest konwersja danych z formatu CSV do formatu GPX (GPS Exchange Format). Format GPX jest szeroko stosowany do zapisu śladów GPS, co pozwala na ich analizę oraz wizualizację na platformach mapowych online. W szczególności, format GPX jest kompatybilny z takimi narzędziami jak [gpx.studio](https://gpx.studio/), które umożliwiają szczegółowe odwzorowanie tras oraz analizę przestrzenną wybranych punktów na mapie. Tego typu wizualizacja jest nieoceniona w monitorowaniu dokładności systemu GPS, umożliwiając szczegółowy przegląd oraz porównanie przebytej trasy z przewidywanymi punktami odniesienia.
 
 Przykładowy plik po konwersji **output.gpx** oraz kod do zamiany rozszerzenia pliku **python_file_csv_to_gpx.py** znajduje się w folderze [**gpx_trajectory**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/gpx_trajectory)
 
-(W tym folderze znajduje się również kod zamiany rozszerzenia pliku, jednakże zapisany w języku Matlab)
 
 ## Pomiar referencyjny punktów znajdujących się przy brzegu
 
-Wykonaliśmy pomiar 12 punktów referencyjnych znajdujących się w wodzie a także 2 osnów pomiarowych niedaleko zbiornika wodnego. Pomiar odbiornikiem GNSS trwał dwa razy po 1 sekundzie na każdy punkt referencyjny (w celu obliczenia przewyższenia a co za tym idzie głębokości, na jakiej znajduje się dany punkt). Ustaliliśmy, że nie potrzebujemy aż tak wysokiej dokładności współrzędnych (uzyskane błędy dx, dy, dh mieściły się w okolicach 1 cm. Pomiar osnowy natomiast miał na celu sprawdzenia dokładności wyznaczenia wartości współrzędnych płaskich. 
+Przeprowadzono kompleksowy pomiar 12 punktów referencyjnych zlokalizowanych na powierzchni wody oraz dwóch punktów osnowy pomiarowej w bliskim sąsiedztwie badanego zbiornika wodnego. Do realizacji pomiarów wykorzystano technologię GNSS, przy czym na każdym punkcie referencyjnym wykonano dwie serie pomiarowe, trwające po 1 sekundzie. Głównym celem pomiarów na punktach referencyjnych było określenie przewyższenia, umożliwiającego obliczenie głębokości zanurzenia danego punktu względem ustalonego poziomu odniesienia. Biorąc pod uwagę planowany poziom dokładności, uznano, że tak krótki czas pomiarowy na każdy punkt (1 sekunda) jest wystarczający, ponieważ uzyskane błędy liniowe (dx, dy) oraz wysokościowe (dh) oscylowały w granicach 1 cm, co mieściło się w akceptowalnych tolerancjach dla zakładanych założeń badawczych.
 
-Pomiar prototypem na 12 punktach referencyjnych trwał po jednej minucie na każdy punkt, natomiast pomiar na punktach osnowy trwał po 4 minuty. Po pomiarze dane te zostały uśrednione i porównane z obserwacjami z odbiornika GNSS. 
+W zakresie weryfikacji dokładności wyznaczenia wartości współrzędnych płaskich dla osnowy pomiarowej, wykonano dodatkowe pomiary na dwóch punktach osnowy, których lokalizacja znajdowała się w niewielkiej odległości od badanego zbiornika. Pomiar na punktach osnowy trwał po cztery minuty, co pozwoliło na zminimalizowanie wpływu ewentualnych błędów systematycznych i losowych oraz umożliwiło uzyskanie bardziej stabilnych i precyzyjnych wyników w zakresie współrzędnych płaskich.
+
+Ponadto, w celu oceny i uwiarygodnienia wyników, na 12 punktach referencyjnych zastosowano prototyp urządzenia pomiarowego. Każdy pomiar realizowany prototypem trwał jedną minutę, co pozwoliło na zebranie odpowiedniej liczby danych obserwacji do dalszej analizy porównawczej. Po zakończeniu pomiarów wszystkie dane zostały poddane procedurze uśredniania, a następnie zestawione z wynikami uzyskanymi przy użyciu odbiornika GNSS. Takie podejście umożliwiło przeprowadzenie analizy różnicowej pomiędzy wynikami uzyskanymi z zastosowaniem różnych technik pomiarowych, co stanowi cenny wkład w ocenę wiarygodności i precyzji zastosowanego prototypu oraz odbiornika GNSS.
 
 ## Wyniki pomiaru referencyjnego 
 
@@ -164,7 +221,10 @@ Tutaj natomiast mierzono punkty osnowy. Czas pomiaru echosondą nad jednym punkt
 
 ## Pomiar batymetryczny
 
-Wykonaliśmy pomiar batymetryczny za pomocą roweru wodnego. Umocowaliśmy deskę z uchwytami do rurki PCV, przez którą przechodził kabel z czujnikiem odległości, do boku pojazdu wodnego szarą taśmą, a pudełko z prototypem ustawiliśmy na tylnym siedzeniu. Poniżej zdjęcia:
+Pomiar batymetryczny przeprowadzono przy użyciu roweru wodnego, na którym zamontowano konstrukcję dla czujnika głębokości. Do jednej strony pojazdu wodnego przymocowano deskę z uchwytami, wykorzystując rurkę PCV jako prowadnicę dla kabla pochodzącego z modułu ultradźwiękowego czujnika odległości. Konstrukcja ta została zabezpieczona i ustabilizowana za pomocą taśmy montażowej, co zapewniło trwałość połączenia i ochronę przed przemieszczaniem się czujnika podczas ruchu roweru po wodzie.
+
+Cały system pomiarowy, w tym prototyp urządzenia został umieszczony w wodoodpornym pudełku, które zlokalizowano na tylnym siedzeniu roweru wodnego. Taka lokalizacja urządzenia pozwoliła na łatwy dostęp do elementów systemu oraz efektywne zarządzanie procesem pomiarowym.
+Poniżej zdjęcia:
 
 <img src="assets/pomiar_batymetryczny_1.jpg" width="792" height="435">
 
