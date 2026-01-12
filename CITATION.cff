@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Low-Cost Bathymetric System (Arduino-based)"
+type: software
+authors:
+  - family-names: "Zarosa"
+    given-names: "Szymon"
+    affiliation: "AGH University of Krakow"
+  - family-names: "Owerko"
+    given-names: "Tomasz"
+    affiliation: "AGH University of Krakow"
+version: 1.0.0
+date-released: 2024-06-26
+url: "https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta"
+keywords:
+  - bathymetry
+  - arduino
+  - hydrography
+  - gnss
+  - citizen-science
