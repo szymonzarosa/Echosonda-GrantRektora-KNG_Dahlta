@@ -1,5 +1,5 @@
 # Rector's Grant 2024 - Bathymetric Measurements [KNG Dahlta]
-This repository contains materials related to the project implemented by the **"Dahlta" Student Scientific Group** as part of the AGH University Rector's Grant 2024 competition. The project, titled *"HydroBIM Research Program – Part One: Automation of Bathymetric Measurements of Water Reservoirs and Navigation Channels,"* aims to construct a prototype echo sounder to learn the basics of electronics and verify its accuracy—both in terms of coordinate determination and depth measurement in bathymetric surveys.
+This repository contains materials related to the project implemented by the **"Dahlta" Student Scientific Group** as part of the AGH University Rector's Grant 2024 competition. The project, titled *"HydroBIM Research Program – Part One: Automation of Bathymetric Measurements of Water Reservoirs and Navigation Channels,"* aims to construct a prototype echo sounder to learn the basics of electronics and verify its accuracy — both in terms of coordinate determination and depth measurement in bathymetric surveys.
 
 ## Project Overview
 
@@ -88,7 +88,7 @@ Connect the modules to the Arduino Uno pins as follows:
 
 * [**getGNSS**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/getGNSS): Code for initializing the GNSS module and verifying connections.
 * [**NonBlockingWrite**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/NonBlockingWrite): Code for initializing the SD card module.
-* [**ourProject**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/ourProject): **The main project code**, integrating all modules for field measurements.
+* [**src**](https://github.com/szymonzarosa/Echosonda-GrantRektora-KNG_Dahlta/tree/main/src): **The main project code**, integrating all modules for field measurements.
 
 ## Operation & LED Indicators
 
@@ -103,7 +103,7 @@ The system uses a 3-color status indication system:
 
 ## Data Output
 
-The results are saved in the `output` folder as `hour_minute_second.csv`. The file structure includes:
+The results are saved in the `data_samples` folder as `hour_minute_second.csv`. The file structure includes:
 
 * **Date/Time:** `year`, `month`, `day`, `hour`, `minute`, `second`
 * **Coordinates:** `latitude`, `longitude` (decimal and degrees), plus directions (`latDirection`, `lonDirection`)
