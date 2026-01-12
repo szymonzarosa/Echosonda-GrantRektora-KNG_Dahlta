@@ -137,6 +137,14 @@ Below are visualizations of the Bagry reservoir bed generated from the prototype
 
 (Spikes and artifacts were removed during post-processing to improve model quality).*
 
+## 💰 Funding & Acknowledgments
+
+This project was funded and realized as part of the **AGH University Rector’s Grant for Student Scientific Groups 2024** (Project No: **40/GRANT/2024**).
+
+[cite_start]**Project Title:** *"HydroBIM Research Program – Part One: Automation of Bathymetric Measurements of Water Reservoirs and Navigation Channels"*.
+
+Realized by members of the **Science Club of Surveyors "Dahlta"** (KNG Dahlta).
+
 ## Useful Links & References
 
 * **MicroSD:** [Arduino SD Library Reference](https://www.arduino.cc/reference/en/libraries/sd/)
