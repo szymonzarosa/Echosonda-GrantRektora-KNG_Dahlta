@@ -1,4 +1,10 @@
 # Rector's Grant 2024 - Bathymetric Measurements [KNG Dahlta]
+
+![AGH University](https://img.shields.io/badge/Affiliation-AGH%20University-red)
+![Status](https://img.shields.io/badge/Status-Prototype%20Tested-success)
+![Language](https://img.shields.io/badge/Language-C%2B%2B%20%2F%20Arduino-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 This repository contains materials related to the project implemented by the **"Dahlta" Student Scientific Group** as part of the AGH University Rector's Grant 2024 competition. The project, titled *"HydroBIM Research Program – Part One: Automation of Bathymetric Measurements of Water Reservoirs and Navigation Channels,"* aims to construct a prototype echo sounder to learn the basics of electronics and verify its accuracy — both in terms of coordinate determination and depth measurement in bathymetric surveys.
 
 ## Project Overview
@@ -150,3 +156,10 @@ Realized by members of the **Science Club of Surveyors "Dahlta"** (KNG Dahlta).
 * **MicroSD:** [Arduino SD Library Reference](https://www.arduino.cc/reference/en/libraries/sd/)
 * **GNSS:** [DFRobot GNSS Wiki](https://wiki.dfrobot.com/SKU_TEL0157_Gravity_GNSS_Positioning_Module)
 * **Ultrasonic Sensor:** [HC-SR04 / JSN-SR04T Tutorial](https://botland.com.pl/content/144-pomiar-odleglosci-z-wykorzystaniem-arduino-i-czujnika-hc-sr04-lub-us-015)
+
+## ✉️ Contact
+
+For any inquiries regarding the hardware setup, calibration process, or the upcoming publication regarding this device, please contact:
+
+* **Szymon Zarosa** - [Link to GitHub profile](https://github.com/szymonzarosa)
+* **KNG Dahlta** - [kng@agh.edu.pl](mailto:kng@agh.edu.pl)
